@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Family Record 2026</title>
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--text:#1f2937;--muted:#6b7280;--line:#e5e7eb;--primary:#2563eb;--primary2:#1d4ed8;--danger:#dc2626;--success:#059669;--warning:#d97706;--shadow:0 10px 30px rgba(0,0,0,.07)}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
+header{background:linear-gradient(135deg,#1e3a8a,#2563eb);color:#fff;padding:18px 24px;position:sticky;top:0;z-index:10;box-shadow:0 3px 12px rgba(0,0,0,.12)}
+.header-inner{max-width:1400px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:20px}.brand h1{font-size:22px;margin:0}.brand small{opacity:.85}.userbox{display:flex;align-items:center;gap:10px;font-size:14px;flex-wrap:wrap}
+.layout{max-width:1400px;margin:22px auto;display:grid;grid-template-columns:250px 1fr;gap:22px;padding:0 18px}.sidebar,.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
+.sidebar{padding:14px;height:max-content;position:sticky;top:92px}.nav-btn{width:100%;border:0;background:transparent;padding:12px 14px;border-radius:10px;text-align:left;font-size:14px;cursor:pointer;margin:3px 0}.nav-btn:hover,.nav-btn.active{background:#eff6ff;color:#1d4ed8;font-weight:700}
+.main{min-width:0}.panel{padding:20px;margin-bottom:18px}.panel h2{margin:0 0 16px;font-size:20px}.panel h3{margin:0 0 12px}.hidden{display:none!important}
+.grid{display:grid;gap:14px}.g2{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.stat{border:1px solid var(--line);border-radius:14px;padding:16px;background:#fafafa}.stat b{display:block;font-size:26px;margin-top:5px}.muted{color:var(--muted)}.small{font-size:12px}
+input,select,textarea{width:100%;padding:10px 12px;border:1px solid #d1d5db;border-radius:9px;background:#fff;font-size:14px}textarea{min-height:92px;resize:vertical}label{font-size:13px;font-weight:700;display:block;margin-bottom:6px}.field{margin-bottom:12px}
+.btn{border:0;border-radius:9px;padding:10px 14px;cursor:pointer;font-weight:700;font-size:13px}.btn-primary{background:var(--primary);color:#fff}.btn-primary:hover{background:var(--primary2)}.btn-soft{background:#eef2ff;color:#3730a3}.btn-danger{background:#fee2e2;color:#991b1b}.btn-success{background:#d1fae5;color:#065f46}.btn-warning{background:#fef3c7;color:#92400e}.actions{display:flex;gap:8px;flex-wrap:wrap}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:12px}table{border-collapse:collapse;width:100%;min-width:950px}th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;font-size:13px}th{background:#f9fafb}.avatar{width:42px;height:42px;border-radius:50%;object-fit:cover;background:#e5e7eb;border:1px solid #d1d5db}
+.badge{display:inline-flex;align-items:center;padding:4px 8px;border-radius:999px;font-size:11px;font-weight:700}.alive{background:#d1fae5;color:#065f46}.deceased{background:#f3f4f6;color:#4b5563}.role{background:#dbeafe;color:#1e40af}.married{background:#fce7f3;color:#9d174d}.single{background:#ede9fe;color:#5b21b6}
+.family-card{border:1px solid var(--line);border-radius:14px;padding:16px}.family-head{display:flex;justify-content:space-between;align-items:center;gap:10px}.member-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.chip{border:1px solid var(--line);padding:7px 10px;border-radius:999px;background:#fff;font-size:12px}
+.tree{overflow:auto;padding:20px 10px}.tree-group{border:1px solid var(--line);border-radius:15px;padding:16px;margin:14px 0;background:#fafafa}.couple{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}.person-node{text-align:center;min-width:145px;padding:10px;background:#fff;border:1px solid #cbd5e1;border-radius:13px}.person-node img{width:60px;height:60px;border-radius:50%;object-fit:cover;background:#ddd}.children-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;border-top:2px solid #94a3b8;padding-top:18px;margin-top:18px}.child{border:1px solid #cbd5e1;border-radius:13px;padding:10px;background:#fff;min-width:140px;text-align:center}
+.post{border:1px solid var(--line);border-radius:15px;padding:16px;margin-bottom:14px}.post-head{display:flex;gap:10px;align-items:center}.post-head img{width:44px;height:44px;border-radius:50%;object-fit:cover}.post-meta{font-size:12px;color:var(--muted)}.post-category{font-size:11px;background:#eff6ff;color:#1d4ed8;padding:4px 8px;border-radius:999px}.post-body{white-space:pre-wrap;margin:12px 0;line-height:1.5}.comments{border-top:1px solid var(--line);margin-top:12px;padding-top:10px}.comment{font-size:13px;background:#f9fafb;padding:8px 10px;border-radius:9px;margin:6px 0}.rating{font-size:13px;color:#b45309}
+.modal{position:fixed;inset:0;background:rgba(15,23,42,.55);display:flex;align-items:center;justify-content:center;padding:20px;z-index:100}.modal-card{background:#fff;width:min(900px,100%);max-height:92vh;overflow:auto;border-radius:16px;padding:20px;box-shadow:0 20px 60px rgba(0,0,0,.25)}.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.close{border:0;background:#f3f4f6;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:18px}
+.notice{padding:12px 14px;border-radius:10px;background:#fff7ed;color:#9a3412;border:1px solid #fed7aa;font-size:13px;margin-bottom:14px}.oknotice{background:#ecfdf5;color:#065f46;border-color:#a7f3d0}.errornotice{background:#fef2f2;color:#991b1b;border-color:#fecaca}
+.loader{position:fixed;inset:0;background:rgba(255,255,255,.78);display:flex;align-items:center;justify-content:center;z-index:200;font-weight:700;color:#1d4ed8}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.sidebar{position:static;display:flex;overflow:auto;gap:5px}.nav-btn{min-width:max-content}.g2,.g3,.g4{grid-template-columns:1fr}.header-inner{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<div id="loader" class="loader">Memuatkan data keluarga...</div>
+<header><div class="header-inner">
+  <div class="brand"><h1>Family Record 2026</h1><small>Sistem rekod & jaringan keluarga berasaskan Google Sheets</small></div>
+  <div class="userbox">
+    <span id="currentUserLabel">Belum ada pengguna</span>
+    <span id="currentRole" class="badge role"></span>
+    <button id="switchUserBtn" class="btn btn-soft" onclick="switchUser()">Tukar Pengguna</button>
+  </div>
+</div></header>
+
+<div class="layout">
+<aside class="sidebar">
+  <button class="nav-btn active" onclick="showView('dashboard',this)">🏠 Dashboard</button>
+  <button class="nav-btn" onclick="showView('members',this)">👥 Ahli Keluarga</button>
+  <button class="nav-btn" onclick="showView('families',this)">🏡 Keluarga</button>
+  <button class="nav-btn" onclick="showView('tree',this)">🌳 Family Tree</button>
+  <button class="nav-btn" onclick="showView('feed',this)">📝 Family Feed</button>
+  <button class="nav-btn admin-only" onclick="showView('admin',this)">⚙️ Admin</button>
+</aside>
+
+<main class="main">
+<section id="dashboard" class="view">
+  <div id="systemNotice"></div>
+  <div class="panel"><h2>Dashboard</h2><div class="grid g4">
+    <div class="stat">Jumlah Ahli<b id="statMembers">0</b></div>
+    <div class="stat">Jumlah Keluarga<b id="statFamilies">0</b></div>
+    <div class="stat">Ahli Hidup<b id="statAlive">0</b></div>
+    <div class="stat">Telah Meninggal<b id="statDeceased">0</b></div>
+  </div></div>
+  <div class="panel"><h3>Keluarga Anda</h3><div id="myFamilySummary"></div></div>
+  <div class="panel"><h3>Posting Terkini</h3><div id="latestPosts"></div></div>
+</section>
+
+<section id="members" class="view hidden">
+  <div class="panel"><div class="family-head">
+    <h2>Direktori Ahli Keluarga</h2>
+    <div class="actions">
+      <input id="memberSearch" style="width:260px" placeholder="Cari nama / keluarga..." oninput="renderMembers()">
+      <button id="addMemberBtn" class="btn btn-primary admin-family" onclick="openMemberModal()">+ Ahli Baharu</button>
+    </div>
+  </div>
+  <div class="table-wrap"><table><thead><tr>
+    <th>Profil</th><th>Nama</th><th>Umur</th><th>Keluarga</th><th>Anak ke-</th><th>Status Hidup</th><th>Perkahwinan</th><th>Role</th><th>Tindakan</th>
+  </tr></thead><tbody id="memberRows"></tbody></table></div></div>
+</section>
+
+<section id="families" class="view hidden">
+  <div class="panel"><div class="family-head"><h2>Senarai Keluarga</h2>
+  <button class="btn btn-primary admin-only" onclick="openFamilyModal()">+ Keluarga Baharu</button></div>
+  <div id="familyCards" class="grid g2"></div></div>
+</section>
+
+<section id="tree" class="view hidden">
+  <div class="panel"><div class="family-head"><h2>Family Tree</h2>
+  <select id="treeFamilySelect" style="width:320px" onchange="renderTree()"></select></div>
+  <div id="treeCanvas" class="tree"></div></div>
+</section>
+
+<section id="feed" class="view hidden"><div class="grid g3" style="grid-template-columns:1fr 2fr 1fr">
+  <div class="panel"><h3>Buat Post</h3>
+    <div class="field"><label>Kategori</label><select id="postCategory"></select></div>
+    <div class="field"><label>Status</label><textarea id="postText" placeholder="Kongsi berita dengan keluarga..."></textarea></div>
+    <button class="btn btn-primary" onclick="createPost()">Post</button>
+  </div>
+  <div class="panel"><h2>Family Feed</h2><div id="feedPosts"></div></div>
+  <div class="panel"><h3>Kategori</h3><div id="categoryStats" class="muted"></div></div>
+</div></section>
+
+<section id="admin" class="view hidden">
+  <div class="panel"><h2>Admin Panel</h2>
+    <div class="notice">Admin boleh mendaftar/edit/delete user, menukar status hidup, mencipta keluarga dan menetapkan Admin Keluarga.</div>
+    <div class="actions"><button class="btn btn-primary" onclick="openMemberModal()">Register User</button><button class="btn btn-primary" onclick="openFamilyModal()">Create Family</button></div>
+  </div>
+  <div class="panel"><h3>Assign Admin Keluarga</h3><div class="grid g3">
+    <div><label>Keluarga</label><select id="assignFamily"></select></div>
+    <div><label>Pilih Ahli</label><select id="assignMember"></select></div>
+    <div style="align-self:end"><button class="btn btn-success" onclick="assignFamilyAdmin()">Set Admin Keluarga</button></div>
+  </div></div>
+</section>
+</main>
+</div>
+
+<div id="memberModal" class="modal hidden"><div class="modal-card">
+<div class="modal-head"><h3 id="memberModalTitle">Daftar Ahli</h3><button class="close" onclick="closeModal('memberModal')">×</button></div>
+<form id="memberForm" onsubmit="saveMember(event)">
+<input type="hidden" id="memberId">
+<div class="grid g2">
+  <div class="field"><label>Nama penuh *</label><input id="fullName" required></div>
+  <div class="field"><label>Email</label><input id="email" type="email"></div>
+  <div class="field"><label>Tarikh lahir *</label><input id="dob" type="date" required></div>
+  <div class="field"><label>Gender</label><select id="gender"><option value="">-- pilih --</option><option>Male</option><option>Female</option></select></div>
+  <div class="field"><label>URL gambar profil</label><input id="profilePhoto" placeholder="https://..."><small class="muted">Buat masa ini guna URL gambar. Upload Google Drive akan ditambah pada fasa seterusnya.</small></div>
+  <div class="field"><label>Keluarga</label><select id="familyId"></select></div>
+  <div class="field"><label>Anak ke berapa dalam adik-beradik</label><input id="siblingOrder" type="number" min="1"></div>
+  <div class="field"><label>Status hidup</label><select id="lifeStatus"><option value="Alive">Hidup</option><option value="Deceased">Telah meninggal dunia</option></select></div>
+  <div class="field"><label>Tarikh meninggal</label><input id="dateOfDeath" type="date"></div>
+  <div class="field"><label>Status perkahwinan</label><select id="maritalStatus"><option value="Single">Single</option><option value="Married">Married</option><option value="Widowed">Widowed</option><option value="Divorced">Divorced</option></select></div>
+  <div class="field"><label>Role</label><select id="role"><option value="User">User</option><option value="FamilyAdmin">Admin Keluarga</option><option value="Admin">Admin</option></select></div>
+</div>
+<div class="field"><label>Alamat</label><textarea id="address"></textarea></div>
+<div class="grid g3">
+  <div class="field"><label>Facebook</label><input id="facebook"></div>
+  <div class="field"><label>Instagram</label><input id="instagram"></div>
+  <div class="field"><label>TikTok</label><input id="tiktok"></div>
+</div>
+<div class="panel" style="box-shadow:none;background:#fafafa"><h3>Hubungan Keluarga</h3>
+  <div class="grid g2">
+    <div class="field"><label>Ayah</label><select id="fatherId"></select></div>
+    <div class="field"><label>Ibu</label><select id="motherId"></select></div>
+  </div>
+  <div class="field"><label>Pasangan / suami</label><select id="spouseMain"></select></div>
+  <div class="grid g4">
+    <div><label>Isteri 1</label><select id="wife1"></select></div>
+    <div><label>Isteri 2</label><select id="wife2"></select></div>
+    <div><label>Isteri 3</label><select id="wife3"></select></div>
+    <div><label>Isteri 4</label><select id="wife4"></select></div>
+  </div>
+</div>
+<div class="actions"><button class="btn btn-primary" type="submit">Simpan</button><button class="btn btn-soft" type="button" onclick="closeModal('memberModal')">Batal</button></div>
+</form></div></div>
+
+<div id="familyModal" class="modal hidden"><div class="modal-card" style="max-width:600px">
+<div class="modal-head"><h3>Keluarga Baharu</h3><button class="close" onclick="closeModal('familyModal')">×</button></div>
+<form onsubmit="saveFamily(event)">
+  <div class="field"><label>Nama keluarga *</label><input id="familyNameInput" required placeholder="Contoh: Keluarga Haji Ahmad"></div>
+  <div class="field"><label>Admin Keluarga</label><select id="newFamilyAdmin"></select></div>
+  <div class="field"><label>Nota</label><textarea id="familyNotes"></textarea></div>
+  <button class="btn btn-primary">Simpan Keluarga</button>
+</form></div></div>
+
+<script>
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwPehgsvcAmW4dtstNkeXDOHUgC2jAhkHWqv1P-EMb4_uEdovZgWbYTg1QCd39_I-sH/exec';
+
+const fallbackPhoto = 'data:image/svg+xml;base64,'+btoa(`<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120"><rect width="100%" height="100%" fill="#dbeafe"/><circle cx="60" cy="45" r="22" fill="#93c5fd"/><rect x="28" y="72" width="64" height="35" rx="18" fill="#93c5fd"/></svg>`);
+
+let state = {users:[],families:[],relationships:[],posts:[],comments:[],ratings:[],categories:[]};
+let currentUserId = localStorage.getItem('familyRecordCurrentUser') || '';
+
+function showLoader(show, text='Memuatkan data keluarga...') {
+  const el=document.getElementById('loader'); el.textContent=text; el.classList.toggle('hidden',!show);
+}
+function notice(msg,type='ok') {
+  document.getElementById('systemNotice').innerHTML=`<div class="notice ${type==='ok'?'oknotice':'errornotice'}">${escapeHtml(msg)}</div>`;
+}
+async function apiGet(action, params={}) {
+  const q=new URLSearchParams({action,...params});
+  const r=await fetch(GOOGLE_SCRIPT_URL+'?'+q.toString());
+  const d=await r.json();
+  if(!d.success) throw new Error(d.error||'API error');
+  return d.data;
+}
+async function apiPost(action,data={}) {
+  const r=await fetch(GOOGLE_SCRIPT_URL,{
+    method:'POST',
+    headers:{'Content-Type':'text/plain;charset=utf-8'},
+    body:JSON.stringify({action,data})
+  });
+  const d=await r.json();
+  if(!d.success) throw new Error(d.error||'API error');
+  return d.data;
+}
+function mapUser(u) {return {
+  id:String(u.UserID||''),fullName:u.FullName||'',email:u.Email||'',dob:dateOnly(u.DOB),gender:u.Gender||'',
+  lifeStatus:u.LifeStatus||'Alive',maritalStatus:u.MaritalStatus||'Single',address:u.Address||'',
+  photo:u.ProfilePhoto||'',facebook:u.Facebook||'',instagram:u.Instagram||'',tiktok:u.TikTok||'',
+  familyId:String(u.FamilyID||''),role:u.Role||'User',dateOfDeath:dateOnly(u.DateOfDeath),
+  siblingOrder:u.BirthOrder===''||u.BirthOrder==null?null:Number(u.BirthOrder)
+}}
+function mapFamily(f) {return {id:String(f.FamilyID||''),name:f.FamilyName||'',adminUserId:String(f.FamilyAdminUserID||''),notes:f.Notes||''}}
+function dateOnly(v) { if(!v)return''; return String(v).slice(0,10); }
+function currentUser() {return state.users.find(u=>u.id===currentUserId)||null}
+function familyName(id) {return state.families.find(f=>f.id===id)?.name||'-'}
+function userName(id) {return state.users.find(u=>u.id===id)?.fullName||'-'}
+function categoryName(id) {return state.categories.find(c=>String(c.CategoryID)===String(id))?.CategoryName||'General'}
+function ageFromDob(dob) {if(!dob)return'';const b=new Date(dob+'T00:00:00'),n=new Date();let a=n.getFullYear()-b.getFullYear();const m=n.getMonth()-b.getMonth();if(m<0||(m===0&&n.getDate()<b.getDate()))a--;return a}
+function canManageMember(u) {const me=currentUser();if(!me)return state.users.length===0;if(me.role==='Admin')return true;if(me.role==='FamilyAdmin')return me.familyId===u.familyId||state.families.find(f=>f.id===u.familyId)?.adminUserId===me.id;return me.id===u.id}
+function isAdmin() {return currentUser()?.role==='Admin'}
+function isAdminFamily() {return ['Admin','FamilyAdmin'].includes(currentUser()?.role)}
+
+async function loadAll() {
+  showLoader(true);
+  try {
+    const [users,families,relationships,posts,comments,ratings,categories]=await Promise.all([
+      apiGet('getUsers'),apiGet('getFamilies'),apiGet('getRelationships'),apiGet('getPosts'),
+      apiGet('getComments'),apiGet('getRatings'),apiGet('getCategories')
+    ]);
+    state.users=(users||[]).map(mapUser);
+    state.families=(families||[]).map(mapFamily);
+    state.relationships=relationships||[];
+    state.posts=posts||[];
+    state.comments=comments||[];
+    state.ratings=ratings||[];
+    state.categories=categories||[];
+    if(!currentUserId || !state.users.some(u=>u.id===currentUserId)) currentUserId=state.users[0]?.id||'';
+    if(currentUserId) localStorage.setItem('familyRecordCurrentUser',currentUserId);
+    renderAll();
+    if(state.users.length===0) {
+      notice('Database disambungkan. Belum ada pengguna. Klik “+ Ahli Baharu” untuk mencipta pengguna pertama sebagai Admin.','ok');
+      document.getElementById('addMemberBtn').classList.remove('hidden');
+    } else notice('Data berjaya dimuatkan daripada Google Sheet.','ok');
+  } catch(e) {
+    console.error(e); notice('Tidak dapat membaca Google Sheet: '+e.message,'error');
+  } finally {showLoader(false)}
+}
+
+function syncRoleUI() {
+  const me=currentUser();
+  document.getElementById('currentUserLabel').textContent=me?me.fullName:'Belum ada pengguna';
+  document.getElementById('currentRole').textContent=me?(me.role==='FamilyAdmin'?'Admin Keluarga':me.role):'';
+  document.getElementById('switchUserBtn').disabled=state.users.length<2;
+  document.querySelectorAll('.admin-only').forEach(x=>x.classList.toggle('hidden',!isAdmin()));
+  document.querySelectorAll('.admin-family').forEach(x=>x.classList.toggle('hidden',!(isAdminFamily()||state.users.length===0)));
+}
+function showView(id,btn) {document.querySelectorAll('.view').forEach(v=>v.classList.add('hidden'));document.getElementById(id).classList.remove('hidden');document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');renderAll()}
+function renderDashboard() {
+  document.getElementById('statMembers').textContent=state.users.length;
+  document.getElementById('statFamilies').textContent=state.families.length;
+  document.getElementById('statAlive').textContent=state.users.filter(u=>u.lifeStatus==='Alive').length;
+  document.getElementById('statDeceased').textContent=state.users.filter(u=>u.lifeStatus==='Deceased').length;
+  const me=currentUser(), fam=me?state.families.find(f=>f.id===me.familyId):null;
+  const members=me?state.users.filter(u=>u.familyId===me.familyId).sort((a,b)=>(a.siblingOrder||999)-(b.siblingOrder||999)):[];
+  document.getElementById('myFamilySummary').innerHTML=me?`<b>${fam?.name||'Belum ditetapkan keluarga'}</b><div class="member-list">${members.map(u=>`<span class="chip">${u.siblingOrder?u.siblingOrder+'. ':''}${escapeHtml(u.fullName)}</span>`).join('')}</div>`:'<span class="muted">Belum ada pengguna.</span>';
+  document.getElementById('latestPosts').innerHTML=state.posts.slice().sort((a,b)=>String(b.CreatedDate||'').localeCompare(String(a.CreatedDate||''))).slice(0,3).map(postHTML).join('')||'<span class="muted">Belum ada post.</span>';
+}
+function renderMembers() {
+  const q=(document.getElementById('memberSearch')?.value||'').toLowerCase();
+  const rows=state.users.filter(u=>u.fullName.toLowerCase().includes(q)||familyName(u.familyId).toLowerCase().includes(q)).sort((a,b)=>String(a.familyId).localeCompare(String(b.familyId))||(a.siblingOrder||999)-(b.siblingOrder||999));
+  document.getElementById('memberRows').innerHTML=rows.map(u=>`<tr>
+    <td><img class="avatar" src="${safePhoto(u.photo)}"></td>
+    <td><b>${escapeHtml(u.fullName)}</b><br><span class="muted">${escapeHtml(u.address||'')}</span></td>
+    <td>${ageFromDob(u.dob)}</td><td>${escapeHtml(familyName(u.familyId))}</td><td>${u.siblingOrder||'-'}</td>
+    <td><span class="badge ${u.lifeStatus==='Alive'?'alive':'deceased'}">${u.lifeStatus==='Alive'?'Hidup':'Telah meninggal dunia'}</span></td>
+    <td><span class="badge ${u.maritalStatus==='Married'?'married':'single'}">${escapeHtml(u.maritalStatus)}</span></td>
+    <td><span class="badge role">${u.role==='FamilyAdmin'?'Admin Keluarga':escapeHtml(u.role)}</span></td>
+    <td><div class="actions">${canManageMember(u)?`<button class="btn btn-soft" onclick="editMember('${u.id}')">Edit</button>`:''}${isAdmin()?`<button class="btn btn-warning" onclick="toggleLife('${u.id}')">Status Hidup</button><button class="btn btn-danger" onclick="deleteMember('${u.id}')">Delete</button>`:''}</div></td>
+  </tr>`).join('')||'<tr><td colspan="9" class="muted">Belum ada ahli keluarga.</td></tr>';
+}
+function renderFamilies() {
+  document.getElementById('familyCards').innerHTML=state.families.map(f=>{
+    const members=state.users.filter(u=>u.familyId===f.id).sort((a,b)=>(a.siblingOrder||999)-(b.siblingOrder||999));
+    return `<div class="family-card"><div class="family-head"><div><h3>${escapeHtml(f.name)}</h3><span class="muted">Admin Keluarga: ${escapeHtml(userName(f.adminUserId))}</span></div><span class="badge role">${members.length} ahli</span></div><div class="member-list">${members.map(m=>`<span class="chip">${m.siblingOrder?m.siblingOrder+'. ':''}${escapeHtml(m.fullName)}</span>`).join('')}</div></div>`;
+  }).join('')||'<span class="muted">Belum ada keluarga.</span>';
+}
+function renderSelects() {
+  const famOpts='<option value="">-- belum ditetapkan --</option>'+state.families.map(f=>`<option value="${f.id}">${escapeHtml(f.name)}</option>`).join('');
+  ['familyId','treeFamilySelect','assignFamily'].forEach(id=>{const el=document.getElementById(id);if(el){const val=el.value;el.innerHTML=famOpts;el.value=val||state.families[0]?.id||''}});
+  const usrOpts='<option value="">-- tiada / pilih ahli --</option>'+state.users.map(u=>`<option value="${u.id}">${escapeHtml(u.fullName)}</option>`).join('');
+  ['spouseMain','wife1','wife2','wife3','wife4','fatherId','motherId','newFamilyAdmin'].forEach(id=>{const el=document.getElementById(id);if(el){const val=el.value;el.innerHTML=usrOpts;el.value=val}});
+  const cat=document.getElementById('postCategory'); if(cat) {
+    cat.innerHTML=(state.categories.filter(c=>String(c.Active).toLowerCase()!=='false').map(c=>`<option value="${c.CategoryID}">${escapeHtml(c.CategoryName)}</option>`).join(''))||'<option value="">General</option>';
+  }
+}
+function getParents(childId) {
+  return state.relationships.filter(r=>String(r.RelationshipType)==='PARENT_CHILD'&&String(r.Person2ID)===String(childId)&&String(r.Status||'Active')==='Active').map(r=>state.users.find(u=>u.id===String(r.Person1ID))).filter(Boolean);
+}
+function getWives(husbandId) {
+  return state.relationships.filter(r=>String(r.RelationshipType)==='HUSBAND_WIFE'&&String(r.Person1ID)===String(husbandId)&&String(r.Status||'Active')==='Active').sort((a,b)=>Number(a.WifeOrder||99)-Number(b.WifeOrder||99)).map(r=>state.users.find(u=>u.id===String(r.Person2ID))).filter(Boolean);
+}
+function renderTree() {
+  const famId=document.getElementById('treeFamilySelect').value||state.families[0]?.id;
+  const members=state.users.filter(u=>u.familyId===famId);
+  if(!members.length){document.getElementById('treeCanvas').innerHTML='<p class="muted">Tiada data.</p>';return}
+  const memberIds=new Set(members.map(m=>m.id));
+  const marriages=state.relationships.filter(r=>r.RelationshipType==='HUSBAND_WIFE'&&memberIds.has(String(r.Person1ID)));
+  const husbands=[...new Set(marriages.map(r=>String(r.Person1ID)))];
+  let html='';
+  husbands.forEach(hid=>{
+    const h=state.users.find(u=>u.id===hid); if(!h)return;
+    const rels=marriages.filter(r=>String(r.Person1ID)===hid).sort((a,b)=>Number(a.WifeOrder||99)-Number(b.WifeOrder||99));
+    const wives=rels.map(r=>state.users.find(u=>u.id===String(r.Person2ID))).filter(Boolean);
+    const parentIds=[hid,...wives.map(w=>w.id)];
+    const childIds=[...new Set(state.relationships.filter(r=>r.RelationshipType==='PARENT_CHILD'&&parentIds.includes(String(r.Person1ID))).map(r=>String(r.Person2ID)))];
+    const children=childIds.map(id=>state.users.find(u=>u.id===id)).filter(Boolean).sort((a,b)=>(a.siblingOrder||999)-(b.siblingOrder||999));
+    html+=`<div class="tree-group"><div class="couple"><div class="person-node"><img src="${safePhoto(h.photo)}"><div><b>${escapeHtml(h.fullName)}</b></div><small>Suami</small></div>${wives.map((w,i)=>`<div>❤</div><div class="person-node"><img src="${safePhoto(w.photo)}"><div><b>${escapeHtml(w.fullName)}</b></div><small>Isteri ${i+1}</small></div>`).join('')}</div><div class="children-row">${children.length?children.map(c=>`<div class="child"><img class="avatar" src="${safePhoto(c.photo)}"><div><b>${escapeHtml(c.fullName)}</b></div><small>Anak ke-${c.siblingOrder||'-'}</small></div>`).join(''):'<div class="muted">Tiada anak direkodkan</div>'}</div></div>`;
+  });
+  if(!html) {
+    const children=members.slice().sort((a,b)=>(a.siblingOrder||999)-(b.siblingOrder||999));
+    html=`<div class="tree-group"><div class="children-row" style="border-top:0">${children.map(c=>`<div class="child"><img class="avatar" src="${safePhoto(c.photo)}"><div><b>${escapeHtml(c.fullName)}</b></div><small>Anak ke-${c.siblingOrder||'-'}</small></div>`).join('')}</div><p class="muted small">Belum ada hubungan perkahwinan/parent-child direkodkan untuk keluarga ini.</p></div>`;
+  }
+  document.getElementById('treeCanvas').innerHTML=html;
+}
+function postHTML(p) {
+  const u=state.users.find(x=>x.id===String(p.UserID))||{fullName:'Unknown',photo:''};
+  const comments=state.comments.filter(c=>String(c.PostID)===String(p.PostID));
+  const ratings=state.ratings.filter(r=>String(r.PostID)===String(p.PostID));
+  const avg=ratings.length?(ratings.reduce((s,r)=>s+Number(r.Rating||0),0)/ratings.length).toFixed(1):'Belum dinilai';
+  return `<div class="post"><div class="post-head"><img src="${safePhoto(u.photo)}"><div style="flex:1"><b>${escapeHtml(u.fullName)}</b><div class="post-meta">${p.CreatedDate?new Date(p.CreatedDate).toLocaleString('ms-MY'):''}</div></div><span class="post-category">${escapeHtml(categoryName(p.CategoryID))}</span></div><div class="post-body">${escapeHtml(p.PostText||'')}</div><div class="actions"><span class="rating">★ ${avg}</span>${currentUser()?`<button class="btn btn-soft" onclick="ratePost('${p.PostID}',5)">Rate 5★</button>`:''}</div><div class="comments">${comments.map(c=>`<div class="comment"><b>${escapeHtml(userName(String(c.UserID)))}</b>: ${escapeHtml(c.CommentText||'')}</div>`).join('')}${currentUser()?`<div class="actions" style="margin-top:8px"><input id="comment-${p.PostID}" placeholder="Tulis komen..."><button class="btn btn-primary" onclick="addComment('${p.PostID}')">Komen</button></div>`:''}</div></div>`;
+}
+function renderFeed() {
+  const posts=state.posts.slice().sort((a,b)=>String(b.CreatedDate||'').localeCompare(String(a.CreatedDate||'')));
+  document.getElementById('feedPosts').innerHTML=posts.map(postHTML).join('')||'<span class="muted">Belum ada post.</span>';
+  const counts={};posts.forEach(p=>{const n=categoryName(p.CategoryID);counts[n]=(counts[n]||0)+1});
+  document.getElementById('categoryStats').innerHTML=Object.entries(counts).map(([k,v])=>`<div style="margin-bottom:8px"><b>${escapeHtml(k)}</b>: ${v}</div>`).join('')||'Belum ada post.';
+}
+function renderAdmin() {
+  const af=document.getElementById('assignFamily'),am=document.getElementById('assignMember'); if(!af||!am)return;
+  const fam=af.value||state.families[0]?.id||'';
+  am.innerHTML='<option value="">-- pilih ahli --</option>'+state.users.filter(u=>!fam||u.familyId===fam).map(u=>`<option value="${u.id}">${escapeHtml(u.fullName)}</option>`).join('');
+  af.onchange=renderAdmin;
+}
+function renderAll() {syncRoleUI();renderSelects();renderDashboard();renderMembers();renderFamilies();renderTree();renderFeed();renderAdmin()}
+
+function openMemberModal() {
+  renderSelects(); document.getElementById('memberForm').reset(); document.getElementById('memberId').value='';
+  document.getElementById('memberModalTitle').textContent=state.users.length===0?'Cipta Admin Pertama':'Daftar Ahli';
+  if(state.users.length===0) document.getElementById('role').value='Admin';
+  document.getElementById('memberModal').classList.remove('hidden');
+}
+function editMember(id) {
+  const u=state.users.find(x=>x.id===id); if(!u||!canManageMember(u))return;
+  openMemberModal(); document.getElementById('memberModalTitle').textContent='Edit Ahli';
+  const vals={memberId:u.id,fullName:u.fullName,email:u.email,dob:u.dob,gender:u.gender,profilePhoto:u.photo,familyId:u.familyId,siblingOrder:u.siblingOrder||'',lifeStatus:u.lifeStatus,dateOfDeath:u.dateOfDeath,address:u.address,facebook:u.facebook,instagram:u.instagram,tiktok:u.tiktok,maritalStatus:u.maritalStatus,role:u.role};
+  Object.entries(vals).forEach(([id2,val])=>{const el=document.getElementById(id2);if(el)el.value=val||''});
+  const parents=getParents(u.id); document.getElementById('fatherId').value=parents.find(p=>p.gender==='Male')?.id||''; document.getElementById('motherId').value=parents.find(p=>p.gender==='Female')?.id||'';
+  const wifeRels=state.relationships.filter(r=>r.RelationshipType==='HUSBAND_WIFE'&&String(r.Person1ID)===u.id).sort((a,b)=>Number(a.WifeOrder||99)-Number(b.WifeOrder||99));
+  wifeRels.slice(0,4).forEach((r,i)=>document.getElementById('wife'+(i+1)).value=String(r.Person2ID));
+  const spouseRel=state.relationships.find(r=>r.RelationshipType==='HUSBAND_WIFE'&&String(r.Person2ID)===u.id); document.getElementById('spouseMain').value=spouseRel?String(spouseRel.Person1ID):'';
+}
+async function saveMember(e) {
+  e.preventDefault(); showLoader(true,'Menyimpan ahli...');
+  try {
+    const id=document.getElementById('memberId').value;
+    let roleVal=document.getElementById('role').value;
+    if(state.users.length===0) roleVal='Admin';
+    const data={
+      UserID:id||undefined, FullName:fullName.value.trim(), Email:email.value.trim(), DOB:dob.value,
+      Gender:gender.value, LifeStatus:lifeStatus.value, MaritalStatus:maritalStatus.value, Address:address.value.trim(),
+      ProfilePhoto:profilePhoto.value.trim(), Facebook:facebook.value.trim(), Instagram:instagram.value.trim(), TikTok:tiktok.value.trim(),
+      FamilyID:familyId.value, Role:roleVal, DateOfDeath:dateOfDeath.value, BirthOrder:siblingOrder.value?Number(siblingOrder.value):''
+    };
+    const saved=await apiPost(id?'updateUser':'addUser',data);
+    const uid=String(saved.UserID);
+    await syncRelationshipsForMember(uid);
+    closeModal('memberModal'); await loadAll(); currentUserId=currentUserId||uid;
+  } catch(err) {alert('Gagal menyimpan: '+err.message);console.error(err)} finally {showLoader(false)}
+}
+async function syncRelationshipsForMember(uid) {
+  const existing=state.relationships.filter(r=>
+    (r.RelationshipType==='PARENT_CHILD'&&String(r.Person2ID)===uid) ||
+    (r.RelationshipType==='HUSBAND_WIFE'&&(String(r.Person1ID)===uid||String(r.Person2ID)===uid))
+  );
+  for(const r of existing) await apiPost('deleteRelationship',{RelationshipID:r.RelationshipID});
+  const father=fatherId.value,mother=motherId.value,spouse=spouseMain.value;
+  if(father) await apiPost('addRelationship',{Person1ID:father,Person2ID:uid,RelationshipType:'PARENT_CHILD',Status:'Active'});
+  if(mother) await apiPost('addRelationship',{Person1ID:mother,Person2ID:uid,RelationshipType:'PARENT_CHILD',Status:'Active'});
+  const wives=[wife1.value,wife2.value,wife3.value,wife4.value];
+  if(wives.some(Boolean)) {
+    for(let i=0;i<wives.length;i++) if(wives[i]) await apiPost('addRelationship',{Person1ID:uid,Person2ID:wives[i],RelationshipType:'HUSBAND_WIFE',WifeOrder:i+1,Status:'Active'});
+  } else if(spouse) {
+    await apiPost('addRelationship',{Person1ID:spouse,Person2ID:uid,RelationshipType:'HUSBAND_WIFE',WifeOrder:1,Status:'Active'});
+  }
+}
+async function deleteMember(id) {
+  if(!isAdmin()||!confirm('Delete user ini?'))return;
+  try {showLoader(true,'Memadam user...'); await apiPost('deleteUser',{UserID:id}); if(currentUserId===id)currentUserId=''; await loadAll()} catch(e){alert(e.message)} finally{showLoader(false)}
+}
+async function toggleLife(id) {
+  if(!isAdmin())return; const u=state.users.find(x=>x.id===id); if(!u)return;
+  try {
+    showLoader(true,'Mengemaskini status...');
+    if(u.lifeStatus==='Alive') await apiPost('markUserDeceased',{UserID:id,DateOfDeath:new Date().toISOString().slice(0,10)});
+    else await apiPost('updateUser',{UserID:id,LifeStatus:'Alive',DateOfDeath:''});
+    await loadAll();
+  } catch(e){alert(e.message)} finally{showLoader(false)}
+}
+function openFamilyModal() {renderSelects();document.getElementById('familyNameInput').value='';document.getElementById('familyNotes').value='';document.getElementById('familyModal').classList.remove('hidden')}
+async function saveFamily(e) {
+  e.preventDefault(); try{showLoader(true,'Menyimpan keluarga...');await apiPost('addFamily',{FamilyName:familyNameInput.value.trim(),FamilyAdminUserID:newFamilyAdmin.value||'',Notes:familyNotes.value.trim()});closeModal('familyModal');await loadAll()}catch(err){alert(err.message)}finally{showLoader(false)}
+}
+async function assignFamilyAdmin() {
+  if(!isAdmin())return; if(!assignFamily.value||!assignMember.value)return alert('Pilih keluarga dan ahli.');
+  try{showLoader(true,'Menetapkan Admin Keluarga...');await apiPost('setFamilyAdmin',{FamilyID:assignFamily.value,FamilyAdminUserID:assignMember.value});await loadAll()}catch(e){alert(e.message)}finally{showLoader(false)}
+}
+async function createPost() {
+  const me=currentUser(); if(!me)return alert('Tiada pengguna aktif.'); if(!postText.value.trim())return;
+  if(!me.familyId)return alert('Pengguna ini belum ditetapkan kepada mana-mana keluarga.');
+  try{showLoader(true,'Menyimpan post...');await apiPost('addPost',{UserID:me.id,FamilyID:me.familyId,CategoryID:postCategory.value,PostText:postText.value.trim(),ImageURL:''});postText.value='';await loadAll()}catch(e){alert(e.message)}finally{showLoader(false)}
+}
+async function addComment(id) {
+  const me=currentUser(),el=document.getElementById('comment-'+id);if(!me||!el?.value.trim())return;
+  try{await apiPost('addComment',{PostID:id,UserID:me.id,CommentText:el.value.trim()});await loadAll()}catch(e){alert(e.message)}
+}
+async function ratePost(id,score) {
+  const me=currentUser();if(!me)return;try{await apiPost('addRating',{PostID:id,UserID:me.id,Rating:score});await loadAll()}catch(e){alert(e.message)}
+}
+function switchUser() {
+  if(state.users.length<2)return;const i=Math.max(0,state.users.findIndex(u=>u.id===currentUserId));currentUserId=state.users[(i+1)%state.users.length].id;localStorage.setItem('familyRecordCurrentUser',currentUserId);renderAll();
+}
+function closeModal(id) {document.getElementById(id).classList.add('hidden')}
+function safePhoto(url) {return /^https?:\/\//i.test(url||'')?url:fallbackPhoto}
+function escapeHtml(s='') {return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+
+loadAll();
+</script>
+</body>
+</html>
