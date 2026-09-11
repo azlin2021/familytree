@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Family Record 2026</title>
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--line:#e5e7eb;--text:#1f2937;--muted:#6b7280;--primary:#2563eb;--danger:#dc2626;--ok:#059669}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}button,input,select,textarea{font:inherit}
+.login-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:22px;background:linear-gradient(135deg,#dbeafe,#eef2ff)}
+.login-card{width:min(460px,100%);background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px;box-shadow:0 20px 60px rgba(0,0,0,.1)}h1,h2,h3{margin-top:0}
+.field{margin:13px 0}label{display:block;font-size:13px;font-weight:700;margin-bottom:6px}input,select,textarea{width:100%;border:1px solid #d1d5db;border-radius:9px;padding:10px 12px}
+.btn{border:0;border-radius:9px;padding:10px 14px;font-weight:700;cursor:pointer}.btn-primary{background:var(--primary);color:#fff}.btn-soft{background:#eef2ff;color:#3730a3}.btn-danger{background:#fee2e2;color:#991b1b}.btn-ok{background:#d1fae5;color:#065f46}
+.notice{padding:11px 13px;border-radius:10px;background:#fff7ed;color:#9a3412;border:1px solid #fed7aa;font-size:13px;margin:12px 0}.error{background:#fef2f2;color:#991b1b;border-color:#fecaca}
+header{background:#1d4ed8;color:white;padding:15px 20px;position:sticky;top:0;z-index:5}.header{max-width:1300px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}
+.layout{max-width:1300px;margin:20px auto;padding:0 16px;display:grid;grid-template-columns:230px 1fr;gap:18px}aside,.panel{background:white;border:1px solid var(--line);border-radius:15px;padding:16px}aside{height:max-content;position:sticky;top:86px}
+.nav{display:block;width:100%;text-align:left;border:0;background:transparent;padding:11px;border-radius:9px;cursor:pointer}.nav.active,.nav:hover{background:#eff6ff;color:#1d4ed8;font-weight:700}
+.hidden{display:none!important}.grid{display:grid;gap:13px}.g2{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.stat{padding:15px;background:#fafafa;border:1px solid var(--line);border-radius:12px}.stat b{font-size:25px;display:block;margin-top:4px}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:11px}table{width:100%;border-collapse:collapse;min-width:980px}th,td{padding:10px;border-bottom:1px solid var(--line);font-size:13px;text-align:left}th{background:#f9fafb}
+.badge{padding:4px 8px;border-radius:999px;font-size:11px;font-weight:700;background:#dbeafe;color:#1e40af}.disabled{background:#fee2e2;color:#991b1b}.actions{display:flex;gap:7px;flex-wrap:wrap}.muted{color:var(--muted)}.small{font-size:12px}
+.post{border:1px solid var(--line);border-radius:13px;padding:14px;margin-bottom:12px}.post-body{white-space:pre-wrap;margin:10px 0}
+.modal{position:fixed;inset:0;background:rgba(15,23,42,.55);display:flex;align-items:center;justify-content:center;padding:20px;z-index:20}.modal-card{width:min(780px,100%);max-height:92vh;overflow:auto;background:#fff;border-radius:16px;padding:20px}
+.loader{position:fixed;inset:0;background:rgba(255,255,255,.8);display:flex;align-items:center;justify-content:center;z-index:50;font-weight:700;color:#1d4ed8}
+@media(max-width:850px){.layout{grid-template-columns:1fr}aside{position:static;display:flex;overflow:auto}.nav{min-width:max-content}.g2,.g3{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div id="loginScreen" class="login-screen">
+  <div class="login-card">
+    <h1>Family Record 2026</h1>
+    <p class="muted">Sila login untuk mengakses rekod keluarga.</p>
+    <div id="loginMessage"></div>
+    <form id="loginForm">
+      <div class="field"><label>Email</label><input id="loginEmail" type="email" required autocomplete="username"></div>
+      <div class="field"><label>Password</label><input id="loginPassword" type="password" required autocomplete="current-password"></div>
+      <button class="btn btn-primary" style="width:100%">Login</button>
+    </form>
+    <div id="firstAdminBox" class="hidden">
+      <hr style="border:0;border-top:1px solid #e5e7eb;margin:22px 0">
+      <h3>Setup Admin Pertama</h3>
+      <p class="small muted">Gunakan ini hanya jika sheet <b>users</b> masih kosong.</p>
+      <div class="field"><label>Nama</label><input id="firstAdminName"></div>
+      <div class="field"><label>Email</label><input id="firstAdminEmail" type="email"></div>
+      <div class="field"><label>Password</label><input id="firstAdminPassword" type="password" placeholder="Min. 8 aksara, huruf + nombor"></div>
+      <button class="btn btn-ok" onclick="createFirstAdmin()">Create First Admin</button>
+    </div>
+  </div>
+</div>
+
+<div id="app" class="hidden">
+<header><div class="header">
+  <div><b>Family Record 2026</b><div class="small" id="whoami"></div></div>
+  <div class="actions"><button class="btn btn-soft" onclick="openPasswordModal()">Tukar Password</button><button class="btn btn-danger" onclick="logout()">Logout</button></div>
+</div></header>
+
+<div class="layout">
+<aside>
+  <button class="nav active" onclick="showView('dashboard',this)">Dashboard</button>
+  <button class="nav" onclick="showView('members',this)">Ahli Keluarga</button>
+  <button class="nav" onclick="showView('feed',this)">Family Feed</button>
+  <button class="nav admin-only" onclick="showView('admin',this)">User Management</button>
+</aside>
+
+<main>
+<section id="dashboard" class="view">
+  <div class="panel"><h2>Dashboard</h2><div class="grid g3">
+    <div class="stat">Ahli Dipaparkan<b id="sUsers">0</b></div>
+    <div class="stat">Keluarga<b id="sFamilies">0</b></div>
+    <div class="stat">Posts<b id="sPosts">0</b></div>
+  </div></div>
+</section>
+
+<section id="members" class="view hidden">
+  <div class="panel"><h2>Ahli Keluarga</h2>
+    <div class="table-wrap"><table><thead><tr><th>Nama</th><th>Email</th><th>Keluarga</th><th>Status Hidup</th><th>Role</th><th>Access</th><th>Tindakan</th></tr></thead><tbody id="memberRows"></tbody></table></div>
+  </div>
+</section>
+
+<section id="feed" class="view hidden">
+  <div class="panel"><h2>Family Feed</h2>
+    <div class="field"><label>Post</label><textarea id="newPost"></textarea></div>
+    <button class="btn btn-primary" onclick="addPost()">Post</button>
+  </div>
+  <div class="panel" id="posts"></div>
+</section>
+
+<section id="admin" class="view hidden">
+  <div class="panel">
+    <h2>User Management</h2>
+    <div class="notice">Admin sahaja boleh create user, enable/disable access, reset password dan delete user.</div>
+    <button class="btn btn-primary" onclick="openUserModal()">+ Register User</button>
+  </div>
+  <div class="panel">
+    <div class="table-wrap"><table><thead><tr><th>Nama</th><th>Email</th><th>Role</th><th>Keluarga</th><th>Access</th><th>Tindakan</th></tr></thead><tbody id="adminRows"></tbody></table></div>
+  </div>
+</section>
+</main>
+</div>
+</div>
+
+<div id="userModal" class="modal hidden"><div class="modal-card">
+  <h3>Register User</h3>
+  <div class="grid g2">
+    <div class="field"><label>Nama penuh</label><input id="uName"></div>
+    <div class="field"><label>Email</label><input id="uEmail" type="email"></div>
+    <div class="field"><label>Initial Password</label><input id="uPassword" type="password" placeholder="Min. 8 aksara, huruf + nombor"></div>
+    <div class="field"><label>Role</label><select id="uRole"><option>User</option><option>FamilyAdmin</option><option>Admin</option></select></div>
+    <div class="field"><label>Keluarga</label><select id="uFamily"></select></div>
+    <div class="field"><label>Access</label><select id="uAccess"><option>Active</option><option>Disabled</option></select></div>
+  </div>
+  <div class="actions"><button class="btn btn-primary" onclick="saveUser()">Simpan</button><button class="btn btn-soft" onclick="closeModal('userModal')">Batal</button></div>
+</div></div>
+
+<div id="passwordModal" class="modal hidden"><div class="modal-card" style="max-width:520px">
+  <h3>Tukar Password</h3>
+  <div class="field"><label>Password semasa</label><input id="pCurrent" type="password"></div>
+  <div class="field"><label>Password baharu</label><input id="pNew" type="password"></div>
+  <div class="actions"><button class="btn btn-primary" onclick="changePassword()">Simpan</button><button class="btn btn-soft" onclick="closeModal('passwordModal')">Batal</button></div>
+</div></div>
+
+<div id="loader" class="loader hidden">Memuatkan...</div>
+
+<script>
+const API = 'https://script.google.com/macros/s/AKfycbyhJf3gEzEO1Hd_8F4d3OF0P-PMPZHbjKMBpTb8r-yFITXriUvXISrmX68uuAoJLnm_/exec';
+let token = sessionStorage.getItem('familyRecordToken') || '';
+let me = null;
+let data = {users:[],families:[],posts:[],comments:[],ratings:[],categories:[]};
+
+function load(show=true){document.getElementById('loader').classList.toggle('hidden',!show)}
+function msg(text,error=false){document.getElementById('loginMessage').innerHTML=`<div class="notice ${error?'error':''}">${esc(text)}</div>`}
+function esc(s=''){return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+function familyName(id){return data.families.find(f=>String(f.FamilyID)===String(id))?.FamilyName||'-'}
+function isAdmin(){return me?.Role==='Admin'}
+
+async function get(action,params={}){
+  const q=new URLSearchParams({action,token,...params});
+  const r=await fetch(API+'?'+q);
+  const j=await r.json();
+  if(!j.success) throw new Error(j.error||'API error');
+  return j.data;
+}
+async function post(action,payload={}){
+  const r=await fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action,token,data:payload})});
+  const j=await r.json();
+  if(!j.success) throw new Error(j.error||'API error');
+  return j.data;
+}
+
+document.getElementById('loginForm').addEventListener('submit',async e=>{
+  e.preventDefault(); load(true);
+  try{
+    const r=await fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:'login',data:{Email:loginEmail.value,Password:loginPassword.value}})});
+    const j=await r.json(); if(!j.success) throw new Error(j.error);
+    token=j.data.token; sessionStorage.setItem('familyRecordToken',token); await boot();
+  }catch(err){msg(err.message,true)}finally{load(false)}
+});
+
+async function boot(){
+  if(!token) return showLogin();
+  load(true);
+  try{
+    me=await get('me');
+    const [users,families,posts,comments,ratings,categories]=await Promise.all([get('getUsers'),get('getFamilies'),get('getPosts'),get('getComments'),get('getRatings'),get('getCategories')]);
+    data={users,families,posts,comments,ratings,categories};
+    showApp(); renderAll();
+  }catch(err){
+    sessionStorage.removeItem('familyRecordToken');token='';showLogin();
+    msg(err.message==='SESSION_EXPIRED'?'Session tamat. Sila login semula.':err.message,true);
+  }finally{load(false)}
+}
+
+function showLogin(){loginScreen.classList.remove('hidden');app.classList.add('hidden');firstAdminBox.classList.remove('hidden')}
+function showApp(){loginScreen.classList.add('hidden');app.classList.remove('hidden');whoami.textContent=`${me.FullName} · ${me.Role}`;document.querySelectorAll('.admin-only').forEach(x=>x.classList.toggle('hidden',!isAdmin()))}
+function showView(id,b){document.querySelectorAll('.view').forEach(v=>v.classList.add('hidden'));document.getElementById(id).classList.remove('hidden');document.querySelectorAll('.nav').forEach(x=>x.classList.remove('active'));b.classList.add('active')}
+function renderAll(){sUsers.textContent=data.users.length;sFamilies.textContent=data.families.length;sPosts.textContent=data.posts.length;renderMembers();renderPosts();renderAdmin();renderFamilyOptions()}
+
+function renderMembers(){
+  memberRows.innerHTML=data.users.map(u=>`<tr><td><b>${esc(u.FullName)}</b></td><td>${esc(u.Email||'')}</td><td>${esc(familyName(u.FamilyID))}</td><td>${esc(u.LifeStatus||'Alive')}</td><td><span class="badge">${esc(u.Role)}</span></td><td><span class="badge ${u.AccessStatus==='Disabled'?'disabled':''}">${esc(u.AccessStatus||'Active')}</span></td><td>${isAdmin()?`<button class="btn btn-soft" onclick="resetUserPassword('${u.UserID}')">Reset Password</button>`:''}</td></tr>`).join('');
+}
+
+function renderAdmin(){
+  if(!isAdmin())return;
+  adminRows.innerHTML=data.users.map(u=>`<tr><td>${esc(u.FullName)}</td><td>${esc(u.Email||'')}</td><td>${esc(u.Role)}</td><td>${esc(familyName(u.FamilyID))}</td><td>${esc(u.AccessStatus||'Active')}</td><td><div class="actions"><button class="btn btn-soft" onclick="toggleAccess('${u.UserID}','${u.AccessStatus||'Active'}')">${(u.AccessStatus||'Active')==='Active'?'Disable':'Enable'}</button><button class="btn btn-soft" onclick="resetUserPassword('${u.UserID}')">Reset Password</button>${String(u.UserID)!==String(me.UserID)?`<button class="btn btn-danger" onclick="deleteUser('${u.UserID}')">Delete</button>`:''}</div></td></tr>`).join('');
+}
+
+function renderPosts(){
+  posts.innerHTML=data.posts.slice().reverse().map(p=>`<div class="post"><b>${esc(data.users.find(u=>String(u.UserID)===String(p.UserID))?.FullName||'User')}</b><div class="small muted">${esc(p.CreatedDate||'')}</div><div class="post-body">${esc(p.PostText||'')}</div></div>`).join('')||'<span class="muted">Belum ada post.</span>';
+}
+
+function renderFamilyOptions(){
+  uFamily.innerHTML='<option value="">-- belum ditetapkan --</option>'+data.families.map(f=>`<option value="${f.FamilyID}">${esc(f.FamilyName)}</option>`).join('');
+}
+
+async function createFirstAdmin(){
+  load(true);
+  try{
+    const r=await fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:'createFirstAdmin',data:{FullName:firstAdminName.value,Email:firstAdminEmail.value,Password:firstAdminPassword.value}})});
+    const j=await r.json(); if(!j.success) throw new Error(j.error);
+    token=j.data.token;sessionStorage.setItem('familyRecordToken',token);await boot();
+  }catch(e){msg(e.message,true)}finally{load(false)}
+}
+
+async function logout(){
+  try{await fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:'logout',token})})}catch(e){}
+  sessionStorage.removeItem('familyRecordToken');token='';me=null;showLogin();
+}
+
+function openUserModal(){userModal.classList.remove('hidden')}function openPasswordModal(){passwordModal.classList.remove('hidden')}function closeModal(id){document.getElementById(id).classList.add('hidden')}
+
+async function saveUser(){
+  try{
+    load(true);await post('addUser',{FullName:uName.value,Email:uEmail.value,InitialPassword:uPassword.value,Role:uRole.value,FamilyID:uFamily.value,AccessStatus:uAccess.value});
+    closeModal('userModal');await boot();
+  }catch(e){alert(e.message)}finally{load(false)}
+}
+
+async function toggleAccess(id,current){
+  try{load(true);await post('setUserAccess',{UserID:id,AccessStatus:current==='Active'?'Disabled':'Active'});await boot()}catch(e){alert(e.message)}finally{load(false)}
+}
+
+async function resetUserPassword(id){
+  const p=prompt('Masukkan password baharu (min 8 aksara, mesti ada huruf dan nombor):');
+  if(!p)return;
+  try{load(true);await post('resetPassword',{UserID:id,NewPassword:p});alert('Password telah direset.')}catch(e){alert(e.message)}finally{load(false)}
+}
+
+async function deleteUser(id){
+  if(!confirm('Delete user ini?'))return;
+  try{load(true);await post('deleteUser',{UserID:id});await boot()}catch(e){alert(e.message)}finally{load(false)}
+}
+
+async function changePassword(){
+  try{load(true);await post('changeMyPassword',{CurrentPassword:pCurrent.value,NewPassword:pNew.value});closeModal('passwordModal');alert('Password berjaya ditukar.')}catch(e){alert(e.message)}finally{load(false)}
+}
+
+async function addPost(){
+  if(!newPost.value.trim())return;
+  try{load(true);await post('addPost',{PostText:newPost.value.trim()});newPost.value='';await boot()}catch(e){alert(e.message)}finally{load(false)}
+}
+
+boot();
+</script>
+</body>
+</html>
